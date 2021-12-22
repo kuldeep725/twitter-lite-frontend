@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { setUserSession } from "../Utils/Common";
-import * as Rest from "../Utils/Rest";
+import Rest from "../Utils/Rest";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -10,8 +10,9 @@ const Login = () => {
   const [error, setError] = useState(null);
   let navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
     console.log("handleLogin called...");
+    e.preventDefault();
     setError(null);
     setLoading(true);
     try {

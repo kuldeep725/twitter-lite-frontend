@@ -1,9 +1,5 @@
 // React core components
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // User defined components
@@ -18,25 +14,28 @@ import "./App.css";
 
 // Utility functions
 import { getToken, removeUserSession, setUserSession } from "./Utils/Common";
-import * as Rest from "./Utils/Rest";
+import Rest from "./Utils/Rest";
 
 function App() {
   const [authLoading, setAuthLoading] = useState(true);
 
   useEffect(() => {
-    const token = getToken();
-    console.log({token});
-    if (!token) return;
+    const checkAuth = async () => {
+      const token = getToken();
+      console.log({ token });
+      if (!token) return;
 
-    try {
-      const response = Rest.verifyToken(token);
-      setUserSession(response.data.token, response.data.user);
-      setAuthLoading(false);
-    } catch (e) {
-      console.log({ e });
-      removeUserSession();
-      setAuthLoading(false);
-    }
+      try {
+        const response = await Rest.verifyToken(token);
+        setUserSession(response.data.token, response.data.user);
+        setAuthLoading(false);
+      } catch (e) {
+        console.log({ verifyTokenError: e });
+        removeUserSession();
+        setAuthLoading(false);
+      }
+    };
+    checkAuth();
   }, []);
 
   if (authLoading && getToken()) {

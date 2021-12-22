@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as Rest from "../Utils/Rest";
+import Rest from "../Utils/Rest";
 import FollowUser from "./FollowUser";
 import { useNavigate } from "react-router-dom";
 
@@ -23,7 +23,7 @@ const WhoToFollow = () => {
   return (
     <div>
       <div>
-        {allUsers.map((user) => {
+        {allUsers.map(user => {
           return <FollowUser user={user} />;
         })}
       </div>
