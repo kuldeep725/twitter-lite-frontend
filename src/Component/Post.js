@@ -7,7 +7,7 @@ const Post = ({ post }) => {
 
   const retweetPost = async () => {}
 
-  return <div key={post.userId}>
+  return <div>
       <h4>Username: {post.username} (<small>{post.userId}</small>)</h4>
       <h4>Fullname: {post.fullname}</h4>
       <p>{post.messsage}</p>

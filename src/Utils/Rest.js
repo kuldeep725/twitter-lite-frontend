@@ -47,7 +47,7 @@ const followUser = async (followingId) => {
 
 const unfollowUser = async (followingId) => {
   console.log("Calling unfollowUser api...");
-  return axios.delete(`/api/following/${followingId}`, null, getHeaders());
+  return axios.delete(`/api/following/${followingId}`, getHeaders());
 };
 
 const getFollowers = async () => {
@@ -63,7 +63,7 @@ const createPost = async (post) => {
 const deletePost = async (postId) => {
   console.log("deletePost api...");
   return axios.delete(`api/post/${postId}`, getHeaders());
-}
+};
 
 const getPosts = async () => {
   console.log("Calling getPosts api...");
@@ -73,27 +73,27 @@ const getPosts = async () => {
 const likePost = async (postId) => {
   console.log("likePost api...");
   return axios.post(`api/post/${postId}/like`, null, getHeaders());
-}
+};
 
 const unlikePost = async (postId) => {
   console.log("unlikePost api...");
-  return axios.delete(`api/post/${postId}/like`, null, getHeaders());
-}
+  return axios.delete(`api/post/${postId}/like`, getHeaders());
+};
 
 const commentOnPost = async (postId, comment) => {
   console.log("commentPost api...");
   return axios.post(`api/post/${postId}/comment`, comment, getHeaders());
-}
+};
 
 const retweetPost = async (postId) => {
   console.log("retweetPost api...");
   return axios.post(`api/post/${postId}/retweet`, null, getHeaders());
-}
+};
 
 const undoRetweetPost = async (postId) => {
   console.log("undoRetweetPost api...");
-  return axios.delete(`api/post/${postId}/retweet`, null, getHeaders());
-}
+  return axios.delete(`api/post/${postId}/retweet`, getHeaders());
+};
 
 const Rest = {
   login,
@@ -104,6 +104,6 @@ const Rest = {
   unfollowUser,
   getFollowers,
   createPost,
-  getPosts
+  getPosts,
 };
 export default Rest;

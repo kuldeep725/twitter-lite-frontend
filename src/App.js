@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import Home from "./Component/Home";
 import Login from "./Component/Login";
 import PrivateRoute from "./Utils/PrivateRoute";
-import Logout from "./Component/Logout";
 import WhoToFollow from "./Component/WhoToFollow";
 
 // Css
@@ -47,7 +46,6 @@ function App() {
       <Routes>
         <Route path="/" element={<PrivateRoute />}>
           <Route index element={<Home />} />
-          <Route path="/logout" element={<Logout />} />
           <Route path="/whotofollow" element={<WhoToFollow />} />
         </Route>
         <Route path="/login" element={<Login />} />
