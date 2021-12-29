@@ -3,6 +3,8 @@ import { setUserSession } from "../Utils/Common";
 import Rest from "../Utils/Rest";
 import { useNavigate } from "react-router-dom";
 
+import "../Css/login.css";
+
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const usernameInput = useFormInput("");
@@ -36,37 +38,35 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form>
-        <div>
-          <label htmlFor="username">Username</label>
+    // <div className="container">
+      <form className="container login-form">
+        <h1 className="italic">Twitter-lite</h1>
+        <div className="form-item">
           <input
             type="text"
             {...usernameInput}
             id="username"
             name="username"
             autoComplete="new-password"
+            placeholder="Username"
           />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
+        <div className="form-item">
           <input
             type="password"
             {...passwordInput}
             id="password"
             name="password"
             autoComplete="new-password"
+            placeholder="Password"
           />
         </div>
-        <div>
-          {error && (
-            <div>
-              <small style={{ color: "red" }}>{error}</small>
-            </div>
-          )}
-        </div>
-        <div>
+        {error && (
+          <div className="error">
+            <small style={{ color: "red" }}>{error}</small>
+          </div>
+        )}
+        <div className="login-btn">
           <input
             type="submit"
             value={loading ? "Loading..." : "Log in"}
@@ -75,7 +75,7 @@ const Login = () => {
           />
         </div>
       </form>
-    </div>
+    // </div>
   );
 };
 
